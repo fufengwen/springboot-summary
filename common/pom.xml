@@ -13,6 +13,7 @@
     </properties>
 
     <dependencies>
+
         <!--核心包,轮子依赖，别重复写啦-->
         <dependency>
             <groupId>com.google.guava</groupId>

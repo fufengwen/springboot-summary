@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <!--导入属性配置-->
+    <properties resource="mybatis-generator/generator.properties"></properties>
+
+    <context id="context" targetRuntime="MyBatis3">
+
+        <!-- 批量增删改方法-->
+        <!--<plugin type="com.imtech.jpa.mybaties.batch.BatchInsertPlugin" />
+        <plugin type="com.imtech.jpa.mybaties.batch.BatchDeleteByPrimaryKeyUUIDTPlugin" />
+        <plugin type="com.imtech.jpa.mybaties.batch.BatchUpdateByPrimaryKeyUUIDTPlugin" />
+        <plugin type="com.imtech.jpa.mybaties.batch.BatchSelectByPrimaryKeyPlugin" />-->
+
+        <!-- 配置生成pojo的序列化的插件-->
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin" />-->
+        <!-- 生成注解 -->
+        <!--<commentGenerator type="com.imtech.jpa.utils.MybatiesCommentGenerator">
+        </commentGenerator>-->
+
+        <!-- 数据库的相关配置 -->
+        <jdbcConnection
+                driverClass="${jdbc.driverClass}"
+                connectionURL="${jdbc.connectionURL}"
+                userId="${jdbc.userId}"
+                password="${jdbc.password}">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 实体类生成的位置 -->
+        <javaModelGenerator targetPackage="com.imtech.yasha.hr.common.mapper.dto.${jdbc.dataSourceName}" targetProject="src/main/java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- *Mapper.xml 文件的位置 -->
+        <sqlMapGenerator targetPackage="mapper.${jdbc.dataSourceName}" targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- Mapper 接口文件的位置 -->
+        <javaClientGenerator targetPackage="com.imtech.yasha.hr.common.mapper.dao.${jdbc.dataSourceName}" targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!-- 相关表的配置 schema="whhfi"-->
+        <table tableName="hr_atds_work_calendar_personnel"
+               enableCountByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               enableUpdateByExample="true"
+        />
+
+    </context>
+</generatorConfiguration>
